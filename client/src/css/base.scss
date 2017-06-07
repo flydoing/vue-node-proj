@@ -1,0 +1,13 @@
+/*base*/
+body,div,ul,li,h3,h4,h5,form,input,button,textarea,p {margin: 0;padding: 0;font-family: "Microsoft YaHei";font-size: 12px;border:none;}
+address,em,strong,h3,h4,h5,i{font-style: normal;font-weight: normal;}
+ul,li{list-style: none;}
+a{color: black;text-decoration: none;}
+img{border: 0;}
+html{font-size: 40px;background: #ffffff;-webkit-overflow-scrolling: touch;}
+body{position:relative;max-width: 640px;min-width: 320px;margin:0 auto;background: #ffffff;}
+.shop{
+	position:relative;
+	padding:50px 0;
+}
+//路由的active

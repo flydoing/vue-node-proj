@@ -1,23 +1,36 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
+  <div class="shop">
+    <comHeader></comHeader>
+    <comSidebar v-show="sideBarState"></comSidebar>
+    <!-- <keep-alive><router-view></router-view></keep-alive> -->
     <router-view></router-view>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'app'
-}
+<script type="text/ecmascript-6">
+  import comHeader from './components/com/header.vue'
+  import comSidebar from './components/com/sidebar.vue'
+
+  import './css/base.scss'
+
+  export default {
+    data () {
+      return {}
+    },
+    components: {
+      comHeader: comHeader,
+      comSidebar: comSidebar
+    },
+    computed: {
+      sideBarState () {
+        return this.$store.getters.getSideBarState
+      }
+    }
+  }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss" scope>
+  // .shop{
+  //   transition: all ease 0.5s;
+  // }
 </style>

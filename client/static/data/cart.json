@@ -1,0 +1,38 @@
+{
+    "state": 1,
+    "msg": "success",
+    "data": {
+        "allSelect": false,
+        "allSeclectPrice": 0,
+        "carts": [
+            {
+                "id": 100048,
+                "type": "type_man",
+                "isSelect": false,
+                "cart_img": "http://ohe5avf3y.bkt.clouddn.com/pro/vue/vue-shop/vue-proj-goods.jpg",
+                "cart_name": "商品名字1",
+                "cart_num": 1,
+                "cart_price": 19
+            },
+            {
+                "id": 100048,
+                "type": "type_man",
+                "isSelect": false,
+                "cart_img": "http://ohe5avf3y.bkt.clouddn.com/pro/vue/vue-shop/vue-proj-goods.jpg",
+                "cart_name": "商品名字2",
+                "cart_num": 2,
+                "cart_price": 29
+            },
+            {
+                "id": 100048,
+                "type": "type_man",
+                "isSelect": false,
+                "cart_img": "http://ohe5avf3y.bkt.clouddn.com/pro/vue/vue-shop/vue-proj-goods.jpg",
+                "cart_name": "商品名字3",
+                "cart_num": 1,
+                "cart_price": 39
+            }
+            
+        ]
+    }
+}

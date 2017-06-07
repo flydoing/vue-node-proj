@@ -2,10 +2,17 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>client</title>
+    <script type="text/javascript">
+      (function(){function a(h,g,b,e,c){var f=h.documentElement,d="orientationchange" in window?"orientationchange":"resize";var i=function(){var j=f.clientWidth;if(j>=e&&j<=b){f.style.fontSize=c*(j/b)+"px"}else{if(j>=b){f.style.fontSize=c+"px"}else{if(j<=e){f.style.fontSize=c*(e/b)+"px"}}}};g.addEventListener(d,i,false);h.addEventListener("DOMContentLoaded",i,false)}a(document,window,640,320,40)})();
+    </script>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <router-view></router-view>
+    </div>
     <!-- built files will be auto injected -->
   </body>
 </html>

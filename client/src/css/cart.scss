@@ -1,0 +1,98 @@
+.s-cart{
+  position: relative;
+}
+.cart-cont{
+  margin: .25rem 0 .5rem;
+  padding: 0 .25rem;
+  border-top: 1px solid #eee;
+  background: #ffffff;
+  .cont-one{
+    height: 2rem;
+    overflow: hidden;
+    padding: .25rem;
+    border-bottom: 1px solid #eee;
+    .goods-checkbox{
+      float: left;
+      height: 2rem;
+      line-height: 2rem;
+    }
+    .goods-a{
+      float: left;
+      width: 1.8rem;
+      height: 2rem;
+      margin: 0 .25rem;
+      .goods-img{
+        display: inline-block;
+        width: 1.8rem;
+        height: 2rem;
+      }
+    }
+    .goods-info{
+      float: left;
+      width: 7.2rem;
+      // background: yellow;
+      .goods-name{
+        min-width: 7.5rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: .38rem;
+        margin-bottom: .2rem;
+      }
+      .goods-counter{
+        a{
+          padding: .125rem .8rem;
+        }
+        .goods-num{
+          width: 1.4rem;
+          border: 1px solid #eee;
+        }
+      }
+    }
+    .goods-price{
+      display: inline-block;
+      height: 2rem;
+      line-height: 2rem;
+      font-size: .5rem;
+      color: #fc8637;
+    }
+    .goods-delete{
+      float: right;
+      height: 2rem;
+      padding: 0 .3rem;
+      font-size: 0.4rem;
+      line-height: 2rem;
+    }
+  }
+}
+.cart-counter{
+  position: fixed;
+  bottom: 0;
+  z-index: 100;
+  height: 50px;
+  line-height: 50px;
+  width:16rem;
+  max-width: 16rem;
+  min-width: 320px;
+  margin:0 auto;
+  border-top: 1px solid #eee;
+  .all-checkbox,.all-price,.btn-counter{
+    display: inline-block;
+    height: 50px;
+    font-size: .4rem;
+  }
+  .all-checkbox{
+    padding-left: .8rem;
+  }
+  .all-price .price-p{
+    margin-left: .8rem;
+    font-size: .4rem;
+    .price{
+      color: #fc8637;
+    }
+  }
+  .btn-counter{
+    float: right;
+    margin-right: .8rem;
+  }
+}
