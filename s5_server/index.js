@@ -1,1 +1,7 @@
-const express = require('express')const app = express()const api = require('./api')api(app)app.listen(8889)
+const express = require('express')
+const app = express()
+
+const api = require('./api')
+api(app)
+
+app.listen(8889)
