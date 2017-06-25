@@ -28,26 +28,38 @@ const userSchema = new Schema({
   pwd: {type: String},
   time: {type: Date, default: Date.now}
 })
-var cartsSchema = new Schema({
+const goodsSchema = new Schema({
+  brand_id: Number,
+  brand_cate: String,
+  brand_name: String,
+  brand_price: Number,
+  brand_desc: String,
+  brand_pic: String
+})
+const cartsSchema = new Schema({
   name: String,
   allSelect: Boolean,
   allSelectPrice: Number,
-  carts: {
-    brand_id: Number,
-    brand_cate: String,
-    brand_name: String,
-    brand_price: Number,
-    brand_desc: String,
-    brand_pic: String,
-    cart_num: Number,
-    cart_isSelect: Boolean
-  }
+  carts: [
+    {
+      brand_id: Number,
+      brand_cate: String,
+      brand_name: String,
+      brand_price: Number,
+      brand_desc: String,
+      brand_pic: String,
+      cart_num: Number,
+      cart_isSelect: Boolean
+    }
+  ]
 });
 
 
 const db = {
   // init: init,
-  userModel: database.model('userModel', userSchema)
+  userModel: database.model('userModel', userSchema),
+  goodsModel: database.model('goodsModel', goodsSchema),
+  cartsModel: database.model('cartsModel', cartsSchema)
 }
 
 module.exports = db

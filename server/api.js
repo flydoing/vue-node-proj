@@ -2,14 +2,33 @@ const db = require('./db')
 
 module.exports = function (app) {
   app.all("*", function(req, res, next) {
-    // res.writeHead(200, { "Content-Type": "text/plain" })
-    // db.init(next)
-    next()
+    // res.writeHead(200, { "Content-Type": "text/plain", "Access-Control-Allow-Origin":"*" })
+    // res.header('Access-Control-Allow-Origin', '*')
+    // res.header('Access-Control-Allow-Headers', 'X-Requested-With')
+    // res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS')
+    // res.header("X-Powered-By",' 3.2.1')
+    // res.header("Content-Type", "application/json;charset=utf-8")
+    // next()
+    // res.header('Access-Control-Allow-Origin', '*');
+    // res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
+    // res.header("Access-Control-Allow-Methods","*");
+
+    next();
+    // if (req.method == 'OPTIONS') {
+    //   res.send(200);
+    // }
+    // else {
+    //   next();
+    // }
   });
   // api login
   app.get('/api/user/login', function (req, res) {
     // 对发来的登录数据进行验证
     if (!req.query.name) {
+      // res.writeHead('Access-Control-Allow-Origin', '*');
+      // res.writeHead('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild, x-access-token');
+      // res.writeHead('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+      // res.writeHead('Access-Control-Allow-Credentials', 'true');
       res.json({code: 600, msg:'name 不能为空！'})
       return
     }

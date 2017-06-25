@@ -101,7 +101,6 @@
     methods: {
       showSideBar () {
         return this.$store.dispatch('changeSideBarState', true)
-        // return this.$store.commit('changeSideBarState', true)
       },
       hideSideBar () {
         return this.$store.dispatch('changeSideBarState', false)
@@ -115,9 +114,41 @@
         if (this.jam.isPhone(this.dataLogin.name)) {
           if (this.jam.isPass(this.dataLogin.pass)) {
             // 登录成功
-            this.jam.locDbSet('dataLogin', {name: this.dataLogin.name, pass: this.dataLogin.pass})
-            this.showState = 'logined'
-            this.tips = ''
+            // 发送请求，验证是否存在账号、密码
+//            this.$http.post('127.0.0.1:8889/api/user/login', {
+//              name: this.dataLogin.name,
+//              pwd: this.dataLogin.pass
+//            })
+//              .then(function (res) {
+//                console.log(res)
+//                this.jam.locDbSet('dataLogin', {name: this.dataLogin.name, pass: this.dataLogin.pass})
+//                this.showState = 'logined'
+//                this.tips = ''
+//              })
+//              .catch(function (err) {
+//                console.log(err)
+//              })
+//            this.$http({
+//              url: '127.0.0.1:8889/api/user/login',
+//              url: '/api/user/login',
+//              method: 'POST',
+//              data: {
+//                name: this.dataLogin.name,
+//                pwd: this.dataLogin.pass
+//              },
+//              header: {
+//                'Content-Type': 'application/x-www-form-urlencoded'
+//              }
+//            })
+            this.$http.get('/api/user/login', {
+              params: {
+                name: this.dataLogin.name,
+                pwd: this.dataLogin.pass
+              }
+            })
+              .then(function (res) {
+                console.log(res.data)
+              })
           } else {
             this.tips = '请输入由字母数字组成的6位密码！'
           }
@@ -160,5 +191,5 @@
 </script>
 
 <style lang="scss" scope>
-  
+
 </style>
