@@ -39,6 +39,8 @@ module.exports = function (app) {
     db.userModel.findOne({name: req.query.name}, function(err, doc){
       if (err) {
         console.log('查询出错：' + err);
+        res.json({code: 700, msg:'查询出错：' + err})
+        return
       } else {
         if (!doc) {
           res.json({code: 700, msg:'不存在该用户名：' + req.query.name})
@@ -48,31 +50,52 @@ module.exports = function (app) {
             res.json({code: 700, msg:'密码不正确！'})
             return
           } else {
-            res.json({code: 700, msg:'密码正确，登录成功'})
+            res.json({code: 200, msg:'密码正确，登录成功'})
             return
           }
         }
 
       }
     })
-    // 查询数据库验证账号、密码
-    // 返回登录状态
-    // res.send(JSON.stringify({code: 200, data: {account: 'guojc', pass: 111111}}))
   })
   // api register
   app.get('/api/user/register', function (req, res) {
     // 对发来的注册数据进行验证
+    let name = req.query.name
+    let pwd = req.query.pwd
+    if (!name) {
+      res.json({code: 600, msg:'name 不能为空！'})
+      return
+    }
+    if (!pwd) {
+      res.json({code: 600, msg:'pwd 不能为空！'})
+      return
+    }
     // 查询数据库验证注册账号、密码
-    console.log(req.url)
-    db.userModel.create({
-      name: 'guojctest1',
-      pwd: 111111
-    }, function (err, doc) {
+    // 是否存在账号
+    db.userModel.findOne({name: req.query.name}, function(err, doc){
       if (err) {
-        res.end('err:' + err)
+        console.log('查询出错：' + err);
+        res.json({code: 700, msg:'查询出错：' + err})
+        return
       } else {
-        // console.log(doc)
-        res.send(doc)
+        if (doc) {
+          res.json({code: 700, msg:'该用户名名已经被注册：' + name})
+          return
+        } else {
+          db.userModel.create({
+            name: name,
+            pwd: pwd
+          }, function (err, doc) {
+            if (err) {
+              res.end('注册失败:' + err)
+            } else {
+              res.json({code: 200, msg:'用户注册成功：' + name})
+              return
+            }
+          })
+        }
+
       }
     })
     // 返回注册状态
