@@ -99,7 +99,6 @@
         return this.$store.dispatch('changeSideBarState', false)
       },
       getDataIndex () {
-        console.log('000000')
         this.$http.get('../../static/data/index.json').then((response) => {
           this.dataIndex = response.data
           this.temai = this.dataIndex.data.temai
@@ -108,11 +107,25 @@
         }, (response) => {
           // error
         })
+
+        this.$http({
+          url: '/api/goods/list',
+          method: 'GET'
+        })
+          .then((res) => {
+            let data = res.data
+            console.log(data)
+            if (data.code === 200) {
+              // 登录成功
+            } else {
+              console.log(data.msg)
+            }
+          })
       }
     }
   }
 </script>
 
 <style lang="scss" scope>
-  
+
 </style>

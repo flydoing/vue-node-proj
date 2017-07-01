@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const initGoods = require('./initGoods.json')
-// const initCarts = require('./initCarts.json')
+const initCarts = require('./initCarts.json')
 
 const userSchema = new Schema({
   name: {type: String},
@@ -9,16 +9,22 @@ const userSchema = new Schema({
   time: {type: Date, default: Date.now}
 })
 const goodsSchema = new Schema({
-  goods: [
-    {
-      brand_id: Number,
-      brand_cate: String,
-      brand_name: String,
-      brand_price: Number,
-      brand_desc: String,
-      brand_pic: String
-    }
-  ]
+  brand_id: Number,
+  brand_cate: String,
+  brand_name: String,
+  brand_price: Number,
+  brand_desc: String,
+  brand_pic: String
+  // goods: [
+  //   {
+  //     brand_id: Number,
+  //     brand_cate: String,
+  //     brand_name: String,
+  //     brand_price: Number,
+  //     brand_desc: String,
+  //     brand_pic: String
+  //   }
+  // ]
 })
 const cartsSchema = new Schema({
   name: String,
@@ -56,18 +62,31 @@ const db = {
 }
 
 const initData = function () {
+  // 初始化商品goods
   db.goodsModel.find({}, function(err, doc){
     if (err) {
       console.log('initData出错：' + err);
-      res.json({code: 700, msg:'initData出错：' + err})
-      return
     } else if (!doc.length) {
-      console.log('db open first time');
+      console.log('db goodsModel open first time');
       // 初始化数据，遍历插入；先打印出来看看
       initGoods.map(brand => {
-        db.goodsModel.create({
-          goods: brand
-        })
+        db.goodsModel.create(brand)
+      })
+      // console.log(initGoods)
+
+    } else {
+      console.log('db open not first time');
+    }
+  })
+  // 为用户name15011760703初始化购物车内容
+  db.cartsModel.find({}, function(err, doc){
+    if (err) {
+      console.log('initData出错：' + err);
+    } else if (!doc.length) {
+      console.log('db cartsModel open first time');
+      // 初始化数据，遍历插入；先打印出来看看
+      initCarts.map(brand => {
+        db.cartsModel.create(brand)
       })
       // console.log(initGoods)
 

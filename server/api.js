@@ -102,6 +102,24 @@ module.exports = function (app) {
     // res.send(JSON.stringify({code: 200, data: {account: 'guojcres', pass: 111111}}))
   })
   // api index
+  app.get('/api/goods/list', function (req, res) {
+    db.goodsModel.find({}, function(err, doc){
+      if (err) {
+        console.log('查询出错：' + err);
+        res.json({code: 700, msg:'查询出错：' + err})
+        return
+      } else {
+        if (!doc) {
+          res.json({code: 600, msg:'没有商品', data: doc})
+          return
+        } else {
+          res.json({code: 200, msg:'', data: doc})
+          return
+        }
+
+      }
+    })
+  })
   // api cate
   // api detail
   // api cart
