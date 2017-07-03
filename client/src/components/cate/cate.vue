@@ -69,6 +69,20 @@
         }, (response) => {
           // error
         })
+
+        this.$http({
+          url: '/api/goods/cate',
+          method: 'GET'
+        })
+          .then((res) => {
+            let data = res.data
+            console.log(data)
+            if (data.code === 200) {
+              // 数据
+            } else {
+              console.log(data.msg)
+            }
+          })
       },
       clickType (type, index) {
         this.nowType = type
@@ -79,5 +93,5 @@
 </script>
 
 <style lang="scss" scope>
-  
+
 </style>

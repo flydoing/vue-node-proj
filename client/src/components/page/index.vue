@@ -116,7 +116,7 @@
             let data = res.data
             console.log(data)
             if (data.code === 200) {
-              // 登录成功
+              // 处理数据
             } else {
               console.log(data.msg)
             }

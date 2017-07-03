@@ -121,6 +121,30 @@ module.exports = function (app) {
     })
   })
   // api cate
+  app.get('/api/goods/cate', function (req, res) {
+    db.goodsModel.find({}, {brand_id:1, brand_cate:1, brand_name:1, brand_price:1, brand_pic:1, _id:0}, function(err, doc){
+      if (err) {
+        console.log('查询出错：' + err);
+        res.json({code: 700, msg:'查询出错：' + err})
+        return
+      } else {
+        if (!doc) {
+          res.json({code: 600, msg:'没有商品', data: doc})
+          return
+        } else {
+          res.json({code: 200, msg:'', data: doc})
+          return
+        }
+      }
+    })
+    db.goodsModel.find({}).distinct('brand_cate').exec((err, docs) => {
+      if (err) {
+        console.log('distinct查询出错：' + err);
+      } else {
+        console.log(docs)
+      }
+    })
+  })
   // api detail
   // api cart
   // api addToCart
