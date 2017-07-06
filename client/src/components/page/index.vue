@@ -12,7 +12,7 @@
         <router-link to="/detail" class="cont-one" href="javascript:;" v-for="brand in temai" :key="brand.id">
           <span class="name">{{brand.brand_name}}</span>
           <span class="price">￥{{brand.brand_price}}</span>
-          <img class="pic" :src="brand.brand_pic_url"/>
+          <img class="pic" :src="brand.brand_pic"/>
         </router-link>
       </div>
     </div>
@@ -30,7 +30,7 @@
             :key="brand.id">
           <span class="name">{{brand.brand_name}}</span>
           <span class="desc">{{brand.brand_desc}}</span>
-          <img class="pic" :src="brand.brand_pic_url"/>
+          <img class="pic" :src="brand.brand_pic"/>
         </router-link>
         <div class="cont-right">
           <router-link to="/detail" class="cont-right-one" href="javascript:;"
@@ -41,7 +41,7 @@
               <span class="name">{{brand.brand_name}}</span>
               <span class="desc">{{brand.brand_desc}}</span>
             </p>
-            <img class="pic" :src="brand.brand_pic_url"/>
+            <img class="pic" :src="brand.brand_pic"/>
           </router-link>
         </div>
       </div>
@@ -57,7 +57,7 @@
         <ul>
           <li v-for="brand in jingpin">
             <router-link to="detail" class="cont-li" href="javascript:;">
-              <img class="pic" :src="brand.brand_pic_url"/>
+              <img class="pic" :src="brand.brand_pic"/>
               <span class="name">{{brand.brand_name}}</span>
               <span class="price">￥{{brand.brand_price}}</span>
             </router-link>
@@ -99,17 +99,17 @@
         return this.$store.dispatch('changeSideBarState', false)
       },
       getDataIndex () {
-        this.$http.get('../../static/data/index.json').then((response) => {
-          this.dataIndex = response.data
-          this.temai = this.dataIndex.data.temai
-          this.rexiao = this.dataIndex.data.rexiao
-          this.jingpin = this.dataIndex.data.jingpin
-        }, (response) => {
-          // error
-        })
+//        this.$http.get('../../static/data/index.json').then((response) => {
+//          this.dataIndex = response.data
+//          this.temai = this.dataIndex.data.temai
+//          this.rexiao = this.dataIndex.data.rexiao
+//          this.jingpin = this.dataIndex.data.jingpin
+//        }, (response) => {
+//          // error
+//        })
 
         this.$http({
-          url: '/api/goods/list',
+          url: '/api/goods/index',
           method: 'GET'
         })
           .then((res) => {
@@ -117,6 +117,10 @@
             console.log(data)
             if (data.code === 200) {
               // 处理数据
+//              this.dataIndex = response.data
+              this.temai = data.data.temai
+              this.rexiao = data.data.rexiao
+              this.jingpin = data.data.jingpin
             } else {
               console.log(data.msg)
             }

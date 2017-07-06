@@ -12,6 +12,7 @@ const goodsSchema = new Schema({
   brand_id: Number,
   brand_cate: String,
   brand_cateName: String,
+  brand_status: String,
   brand_name: String,
   brand_price: Number,
   brand_desc: String,
@@ -61,15 +62,6 @@ const db = {
   goodsModel: database.model('goodsModel', goodsSchema),
   cartsModel: database.model('cartsModel', cartsSchema)
 }
-
-// test
-db.goodsModel.find({}, {brand_cate:1, brand_cateName:1, _id:0}, function(err, docs){
-  if (err) {
-    console.log('distinct查询出错：' + err);
-  } else {
-    console.log(docs)
-  }
-})
 
 const initData = function () {
   // 初始化商品goods
