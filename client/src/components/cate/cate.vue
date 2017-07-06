@@ -23,9 +23,9 @@
     </div>
     <div class="cate-cont">
       <ul>
-        <li v-for="brand in allBrand" v-if="nowType==brand.type || nowType=='type_all'">
+        <li v-for="brand in allBrand" v-if="nowType==brand.brand_cate || nowType=='type_all'">
           <router-link to="detail" class="cont-li" href="javascript:;">
-            <img class="pic" :src="brand.brand_pic_url"/>
+            <img class="pic" :src="brand.brand_pic"/>
             <span class="name">{{brand.brand_name}}</span>
             <span class="price">{{brand.brand_price}}</span>
           </router-link>
@@ -62,13 +62,44 @@
         return this.$store.dispatch('changeSideBarState', false)
       },
       getDataCate () {
-        this.$http.get('../../static/data/cate.json').then((response) => {
-          this.dataCate = response.data
-          this.types = this.dataCate.data.types
-          this.allBrand = this.dataCate.data.allBrand
-        }, (response) => {
-          // error
-        })
+//        this.$http.get('../../static/data/cate.json').then((response) => {
+//          this.dataCate = response.data
+//          this.types = this.dataCate.data.types
+//          this.allBrand = this.dataCate.data.allBrand
+//        }, (response) => {
+//          // error
+//        })
+        // 左侧导航条的数据暂时默认写死
+        this.types = [
+          {
+            'type_name': '全部',
+            'type_now': 'type_all'
+          },
+          {
+            'type_name': '男装',
+            'type_now': 'type_man'
+          },
+          {
+            'type_name': '女装',
+            'type_now': 'type_girl'
+          },
+          {
+            'type_name': '男装',
+            'type_now': 'type_man'
+          },
+          {
+            'type_name': '男装',
+            'type_now': 'type_man'
+          },
+          {
+            'type_name': '女装',
+            'type_now': 'type_girl'
+          },
+          {
+            'type_name': '女装',
+            'type_now': 'type_girl'
+          }
+        ]
 
         this.$http({
           url: '/api/goods/cate',
@@ -79,6 +110,9 @@
             console.log(data)
             if (data.code === 200) {
               // 数据
+//              this.dataCate = response.data
+//              this.types = this.dataCate.data.types
+              this.allBrand = data.data
             } else {
               console.log(data.msg)
             }

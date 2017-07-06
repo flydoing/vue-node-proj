@@ -162,7 +162,7 @@ module.exports = function (app) {
 
   })
   // api cate
-  app.get('/api/goods/list', function (req, res) {
+  app.get('/api/goods/cate', function (req, res) {
     db.goodsModel.find({}, function(err, doc){
       if (err) {
         console.log('查询出错：' + err);

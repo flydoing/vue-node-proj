@@ -9,7 +9,7 @@
         <router-link to="/cate" class="head-right">更多 ></router-link>
       </p>
       <div class="cont-main cont-temai">
-        <router-link to="/detail" class="cont-one" href="javascript:;" v-for="brand in temai" :key="brand.id">
+        <router-link class="cont-one" href="javascript:;" v-for="brand in temai" :to="'detail/'+brand.brand_id" :key="brand.id">
           <span class="name">{{brand.brand_name}}</span>
           <span class="price">￥{{brand.brand_price}}</span>
           <img class="pic" :src="brand.brand_pic"/>
@@ -24,7 +24,7 @@
         <router-link to="/cate" class="head-right">更多 ></router-link>
       </p>
       <div class="cont-main cont-rexiao">
-        <router-link to="/detail" class="cont-left" href="javascript:;"
+        <router-link :to="'detail/'+brand.brand_id" class="cont-left" href="javascript:;"
             v-for="(brand, key, index) in rexiao"
             v-if="key==0"
             :key="brand.id">
@@ -33,7 +33,7 @@
           <img class="pic" :src="brand.brand_pic"/>
         </router-link>
         <div class="cont-right">
-          <router-link to="/detail" class="cont-right-one" href="javascript:;"
+          <router-link :to="'detail/'+brand.brand_id" class="cont-right-one" href="javascript:;"
               v-for="(brand, key, index) in rexiao"
               v-if="key>=1"
               :key="brand.id">

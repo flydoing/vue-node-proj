@@ -18,7 +18,8 @@ export default new VueRouter({
       children: [
         {path: 'index', name: 'index', component: Index},
         {path: 'cate', name: 'cate', component: Cate},
-        {path: 'detail', name: 'detail', component: Detail},
+        // {path: 'detail', name: 'detail', component: Detail},
+        {path: 'detail/:id', name: 'detail', component: Detail},
         {path: 'center', name: 'center', component: Center},
         {path: 'cart', name: 'cart', component: Cart}
       ]
