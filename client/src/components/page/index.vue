@@ -56,7 +56,7 @@
       <div class="cont-main cont-jingpin">
         <ul>
           <li v-for="brand in jingpin">
-            <router-link to="detail" class="cont-li" href="javascript:;">
+            <router-link :to="'detail/'+brand.brand_id" class="cont-li" href="javascript:;">
               <img class="pic" :src="brand.brand_pic"/>
               <span class="name">{{brand.brand_name}}</span>
               <span class="price">￥{{brand.brand_price}}</span>
