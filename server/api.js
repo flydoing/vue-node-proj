@@ -181,6 +181,25 @@ module.exports = function (app) {
     })
   })
   // api detail
+  app.get('/api/goods/detail', function (req, res) {
+    let brand_id = req.query.brand_id || 10001
+    db.goodsModel.findOne({brand_id: brand_id}, function(err, doc){
+      if (err) {
+        console.log('查询出错：' + err);
+        res.json({code: 700, msg:'查询出错：' + err})
+        return
+      } else {
+        if (!doc) {
+          res.json({code: 600, msg:'没有商品', data: doc})
+          return
+        } else {
+          res.json({code: 200, msg:'', data: doc})
+          return
+        }
+
+      }
+    })
+  })
   // api cart
   // api addToCart
   app.get('*', function(req, res){
