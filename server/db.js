@@ -30,20 +30,14 @@ const goodsSchema = new Schema({
 })
 const cartsSchema = new Schema({
   name: String,
-  allSelect: Boolean,
-  allSelectPrice: Number,
-  carts: [
-    {
-      brand_id: Number,
-      brand_cate: String,
-      brand_name: String,
-      brand_price: Number,
-      brand_desc: String,
-      brand_pic: String,
-      cart_num: Number,
-      cart_isSelect: Boolean
-    }
-  ]
+  brand_id: Number,
+  brand_cate: String,
+  brand_name: String,
+  brand_price: Number,
+  brand_desc: String,
+  brand_pic: String,
+  cart_num: Number,
+  cart_isSelect: Boolean
 });
 
 const database = mongoose.connect('mongodb://127.0.0.1:27017/test_nodeVue')

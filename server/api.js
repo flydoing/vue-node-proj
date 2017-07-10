@@ -182,8 +182,8 @@ module.exports = function (app) {
   })
   // api detail
   app.get('/api/goods/detail', function (req, res) {
-    let brand_id = req.query.brand_id || 10001
-    db.goodsModel.findOne({brand_id: brand_id}, function(err, doc){
+    let brand_id = req.query.brand_id
+    db.goodsModel.findOne({brand_id: brand_id}, {__v: 0, _id: 0}, function(err, doc){
       if (err) {
         console.log('查询出错：' + err);
         res.json({code: 700, msg:'查询出错：' + err})
@@ -196,12 +196,62 @@ module.exports = function (app) {
           res.json({code: 200, msg:'', data: doc})
           return
         }
-
       }
     })
   })
-  // api cart
   // api addToCart
+  app.get('/api/goods/addToCart', function (req, res) {
+    let brand_id = req.query.brand_id
+    let name = req.query.name
+    let newCart = req.query
+    db.cartsModel.update({brand_id: brand_id, name: name}, {$set:newCart}, {upsert:true}, function(err){
+        if (err) {
+          console.log('加入购物车失败：' + err);
+          res.json({code: 700, msg:'加入购物车失败：' + err})
+          return
+        } else {
+          // add
+          res.json({code: 200, msg:'加入购物车成功'})
+          return
+        }
+    })
+    // db.cartsModel.findOne({brand_id: brand_id, name: name}, {__v: 0, _id: 0}, function(err, doc){
+    //   if (err) {
+    //     console.log('查询出错：' + err);
+    //     res.json({code: 700, msg:'查询出错：' + err})
+    //     return
+    //   } else {
+    //     if (!doc) {
+    //       // add
+    //       res.json({code: 600, msg:'没有商品', data: doc})
+    //       return
+    //     } else {
+    //       res.json({code: 200, msg:'', data: doc})
+    //       return
+    //     }
+    //   }
+    // })
+  })
+  // api carts
+  app.get('/api/goods/carts', function (req, res) {
+    let name = req.query.name
+    db.cartsModel.find({name: name}, {__v: 0, _id: 0}, function(err, doc){
+      if (err) {
+        console.log('购物车查询出错：' + err);
+        res.json({code: 700, msg:'购物车查询出错：' + err})
+        return
+      } else {
+        if (!doc) {
+          res.json({code: 600, msg:'购物车为空', data: doc})
+          return
+        } else {
+          res.json({code: 200, msg:'购物车返回成功', data: doc})
+          return
+        }
+      }
+    })
+  })
+
   app.get('*', function(req, res){
     res.end('404')
   })
