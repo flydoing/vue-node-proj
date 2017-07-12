@@ -91,44 +91,33 @@
         }
       },
       addCart () {
+        // 判断是否登录
         this.jam = new Jam()
-        this.detailData.name = this.jam.locDbGet('dataLogin').name
-        this.detailData.cart_isSelect = false
-        this.$http({
-          url: '/api/goods/addToCart',
-          method: 'GET',
-          params: {...this.detailData}
-        })
-          .then((res) => {
-            let data = res.data
-            console.log(data)
-            if (data.code === 200) {
-              // 加入购物车成功，跳转路由
-              console.log(data.msg)
-              router.push({ path: 'cart' })
-            } else {
-              console.log(data.msg)
-            }
+        if (this.jam.locDbGet('dataLogin')) {
+          this.detailData.name = this.jam.locDbGet('dataLogin').name
+          this.detailData.cart_isSelect = false
+          // 请求
+          this.$http({
+            url: '/api/goods/addToCart',
+            method: 'GET',
+            params: {...this.detailData}
           })
-//        let localDB = new LocalDB('dataCart')
-//        if (localDB.get('dataCart').length === 0 || localDB.get('dataCart').data.carts.length === 0) {
-//          this.$http.get('../../static/data/cart.json').then((response) => {
-//            this.dataCart = response.data
-//            this.carts = this.dataCart.data.carts
-//            localDB.set(this.dataCart)
-//            let dataCart = localDB.get('dataCart')
-//            dataCart.data.carts.unshift(this.detailData)
-//            localDB.set(dataCart)
-//            router.push({ path: 'cart' })
-//          }, (response) => {
-//            // error
-//          })
-//        } else {
-//          let dataCart = localDB.get('dataCart')
-//          dataCart.data.carts.unshift(this.detailData)
-//          localDB.set(dataCart)
-//          router.push({ path: 'cart' })
-//        }
+            .then((res) => {
+              let data = res.data
+              console.log(data)
+              if (data.code === 200) {
+                // 加入购物车成功，跳转路由
+                console.log(data.msg)
+                router.push({ path: 'cart' })
+              } else {
+                console.log(data.msg)
+              }
+            })
+        } else {
+          // 弹窗未登录，去登录，router
+          console.log('未登录！')
+          router.push({path: 'center'})
+        }
       },
       getRandom (min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min

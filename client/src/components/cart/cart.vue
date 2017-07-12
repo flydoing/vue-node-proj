@@ -37,6 +37,10 @@
 <script>
   import Jam from '../com/jam'
   import LocalDB from '../com/localDB'
+  import Vue from 'vue'
+  import VueRouter from 'vue-router'
+  Vue.use(VueRouter)
+  const router = new VueRouter()
   import '../../css/cart.scss'
 
   export default {
@@ -45,12 +49,22 @@
         dataCart: {},
         carts: {},
         isAllSelectState: false,
+        name: '',
         jam: function () {}
       }
     },
     created () {
       this.$store.dispatch('changeHeaderTitle', '购物车')
-      this.getDataCart()
+      // 判断是否登录
+      this.jam = new Jam()
+      if (this.jam.locDbGet('dataLogin')) {
+        this.name = this.jam.locDbGet('dataLogin').name
+        this.getDataCart()
+      } else {
+        // 弹窗未登录，去登录，router
+        console.log('未登录！')
+        router.push({path: 'center'})
+      }
     },
     computed: {
       totalNowPrice () {
@@ -74,13 +88,11 @@
         return this.$store.dispatch('changeSideBarState', false)
       },
       getDataCart () {
-        this.jam = new Jam()
-        let name = this.jam.locDbGet('dataLogin').name
         this.$http({
           url: '/api/goods/carts',
           method: 'GET',
           params: {
-            name: name
+            name: this.name
           }
         })
           .then((res) => {
