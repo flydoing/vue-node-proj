@@ -1,6 +1,6 @@
 <template>
   <div class="s-detail">
-    <comSwiper></comSwiper>
+    <div class="ban"><img :src="detailData.brand_pic" alt=""></div>
     <div class="cont">
       <p class="name">{{detailData.brand_name}}</p>
       <span class="price">￥{{detailData.brand_price}}</span>
@@ -18,7 +18,6 @@
 </template>
 
 <script>
-  import comSwiper from '../com/swiper'
   import Jam from '../com/jam'
   import Vue from 'vue'
   import VueRouter from 'vue-router'
@@ -42,9 +41,6 @@
         },
         jam: function () {}
       }
-    },
-    components: {
-      comSwiper: comSwiper
     },
     created () {
       this.$store.dispatch('changeHeaderTitle', '商品详情页')

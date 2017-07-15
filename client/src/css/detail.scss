@@ -2,15 +2,12 @@
   position: relative;
 }
 .s-detail{
-  .s-swiper{
-    height: 10rem;
-    width: 16rem;
-  }
-  .slide{
-    background: green;
+  .ban{
+    height: auto;
+    width: 100%;
     img{
-      width: 16rem;
-      height: 10rem;
+      width: 100%;
+      height: auto;
     }
   }
 }

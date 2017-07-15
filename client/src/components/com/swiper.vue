@@ -31,9 +31,6 @@
       },
       hideSideBar () {
         return this.$store.dispatch('changeSideBarState', false)
-      },
-      goBack () {
-        this.$router.go(-1)
       }
     }
   }
