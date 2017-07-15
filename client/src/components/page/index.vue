@@ -12,7 +12,8 @@
         <router-link class="cont-one" href="javascript:;" v-for="brand in temai" :to="'detail/'+brand.brand_id" :key="brand.id">
           <span class="name">{{brand.brand_name}}</span>
           <span class="price">￥{{brand.brand_price}}</span>
-          <img class="pic" :src="brand.brand_pic"/>
+          <!--<img class="pic" :src="brand.brand_pic"/>-->
+          <img class="pic" v-lazy="brand.brand_pic"/>
         </router-link>
       </div>
     </div>
@@ -30,7 +31,8 @@
             :key="brand.id">
           <span class="name">{{brand.brand_name}}</span>
           <span class="desc">{{brand.brand_desc}}</span>
-          <img class="pic" :src="brand.brand_pic"/>
+          <!--<img class="pic" :src="brand.brand_pic"/>-->
+          <img class="pic" v-lazy="brand.brand_pic"/>
         </router-link>
         <div class="cont-right">
           <router-link :to="'detail/'+brand.brand_id" class="cont-right-one" href="javascript:;"
@@ -41,7 +43,8 @@
               <span class="name">{{brand.brand_name}}</span>
               <span class="desc">{{brand.brand_desc}}</span>
             </p>
-            <img class="pic" :src="brand.brand_pic"/>
+            <!--<img class="pic" :src="brand.brand_pic"/>-->
+            <img class="pic" v-lazy="brand.brand_pic"/>
           </router-link>
         </div>
       </div>
@@ -57,11 +60,17 @@
         <ul>
           <li v-for="brand in jingpin">
             <router-link :to="'detail/'+brand.brand_id" class="cont-li" href="javascript:;">
-              <img class="pic" :src="brand.brand_pic"/>
+              <!--<img class="pic" :src="brand.brand_pic"/>-->
+              <img class="pic" v-lazy="brand.brand_pic"/>
               <span class="name">{{brand.brand_name}}</span>
               <span class="price">￥{{brand.brand_price}}</span>
             </router-link>
           </li>
+          <infinite-loading :on-infinite="onInfinite" ref="infiniteLoading" spinner="default">
+            <span slot="no-more">
+              没有更多数据了
+            </span>
+          </infinite-loading>
         </ul>
       </div>
     </div>
@@ -72,19 +81,21 @@
 
 <script>
   import comSwiper from '../com/swiper'
+  import InfiniteLoading from 'vue-infinite-loading'
   import '../../css/index.scss'
 
   export default {
     data () {
       return {
         dataIndex: {},
-        temai: {},
-        rexiao: {},
-        jingpin: {}
+        temai: [],
+        rexiao: [],
+        jingpin: []
       }
     },
     components: {
-      comSwiper: comSwiper
+      comSwiper: comSwiper,
+      InfiniteLoading: InfiniteLoading
     },
     created () {
       this.$store.dispatch('changeHeaderTitle', '首页')
@@ -99,15 +110,6 @@
         return this.$store.dispatch('changeSideBarState', false)
       },
       getDataIndex () {
-//        this.$http.get('../../static/data/index.json').then((response) => {
-//          this.dataIndex = response.data
-//          this.temai = this.dataIndex.data.temai
-//          this.rexiao = this.dataIndex.data.rexiao
-//          this.jingpin = this.dataIndex.data.jingpin
-//        }, (response) => {
-//          // error
-//        })
-
         this.$http({
           url: '/api/goods/index',
           method: 'GET'
@@ -117,10 +119,33 @@
             console.log(data)
             if (data.code === 200) {
               // 处理数据
-//              this.dataIndex = response.data
               this.temai = data.data.temai
               this.rexiao = data.data.rexiao
               this.jingpin = data.data.jingpin
+            } else {
+              console.log(data.msg)
+            }
+          })
+      },
+      onInfinite () {
+        this.$http({
+          url: '/api/goods/index/jingpin',
+          method: 'GET',
+          params: {
+            nowLength: this.jingpin.length
+          }
+        })
+          .then((res) => {
+            let data = res.data
+            let newJingpin = data.data
+            console.log(data)
+            if (data.code === 200) {
+              // 处理数据
+              this.jingpin = this.jingpin.concat(newJingpin)
+              this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded')
+              if (newJingpin.length === 0) {
+                this.$refs.infiniteLoading.$emit('$InfiniteLoading:complete')
+              }
             } else {
               console.log(data.msg)
             }

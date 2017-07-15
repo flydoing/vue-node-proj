@@ -95,7 +95,7 @@
         this.jam = new Jam()
         if (this.jam.locDbGet('dataLogin')) {
           this.detailData.name = this.jam.locDbGet('dataLogin').name
-          this.detailData.cart_isSelect = false
+          this.detailData.cart_isSelect = true
           // 请求
           this.$http({
             url: '/api/goods/addToCart',

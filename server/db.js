@@ -40,6 +40,7 @@ const cartsSchema = new Schema({
   cart_isSelect: Boolean
 });
 
+mongoose.Promise = global.Promise;
 const database = mongoose.connect('mongodb://127.0.0.1:27017/test_nodeVue')
 database.connection.on('error', function(error){
   console.log('数据库test_nodeVue连接失败：' + error)

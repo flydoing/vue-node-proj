@@ -161,6 +161,32 @@ module.exports = function (app) {
   // 异步操作，未解决
 
   })
+  // 精品下拉加载更多api index/jingpin
+  app.get('/api/goods/index/jingpin', function (req, res) {
+    let nowLength = parseInt(req.query.nowLength)
+    console.log(nowLength)
+    db.goodsModel.find(
+      {brand_status: "jingpin"},
+      {brand_id: 1, brand_name: 1, brand_price: 1, brand_pic: 1, _id: 0},
+      {limit: 4, skip:nowLength},
+      function (err, doc) {
+        if (err) {
+          console.log('jingpin find error!');
+          console.log(err)
+        } else {
+          if (!doc) {
+            // res
+            res.json({code: 600, msg: '没有了', data: ''})
+            return
+          } else {
+            // res
+            res.json({code: 200, msg: '', data: doc})
+            return
+          }
+        }
+      }
+    )
+  })
   // api cate
   app.get('/api/goods/cate', function (req, res) {
     db.goodsModel.find({}, function(err, doc){
