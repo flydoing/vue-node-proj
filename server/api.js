@@ -224,7 +224,6 @@ module.exports = function (app) {
   // 精品下拉加载更多api index/jingpin
   app.get('/api/goods/index/jingpin', function (req, res) {
     let nowLength = parseInt(req.query.nowLength)
-    console.log(nowLength)
     db.goodsModel.find(
       {brand_status: "jingpin"},
       {brand_id: 1, brand_name: 1, brand_price: 1, brand_pic: 1, _id: 0},
@@ -239,9 +238,11 @@ module.exports = function (app) {
             res.json({code: 600, msg: '没有了', data: ''})
             return
           } else {
-            // res
-            res.json({code: 200, msg: '', data: doc})
-            return
+            // res 加载效果，故意延时1s
+            setTimeout( ()=> {
+              res.json({code: 200, msg: '', data: doc})
+              return
+            }, 1000)
           }
         }
       }
@@ -301,22 +302,6 @@ module.exports = function (app) {
           return
         }
     })
-    // db.cartsModel.findOne({brand_id: brand_id, name: name}, {__v: 0, _id: 0}, function(err, doc){
-    //   if (err) {
-    //     console.log('查询出错：' + err);
-    //     res.json({code: 700, msg:'查询出错：' + err})
-    //     return
-    //   } else {
-    //     if (!doc) {
-    //       // add
-    //       res.json({code: 600, msg:'没有商品', data: doc})
-    //       return
-    //     } else {
-    //       res.json({code: 200, msg:'', data: doc})
-    //       return
-    //     }
-    //   }
-    // })
   })
   // api carts
   app.get('/api/goods/carts', function (req, res) {
@@ -334,6 +319,22 @@ module.exports = function (app) {
           res.json({code: 200, msg:'购物车返回成功', data: doc})
           return
         }
+      }
+    })
+  })
+  // api delectCart
+  app.get('/api/goods/delectCart', function (req, res) {
+    let brand_id = req.query.brand_id
+    let name = req.query.name
+    db.cartsModel.remove({brand_id: brand_id, name: name}, function(err){
+      if (err) {
+        console.log('购物车删除：' + err);
+        res.json({code: 700, msg:'购物车删除：' + err})
+        return
+      } else {
+        // add
+        res.json({code: 200, msg:'购物车删除成功'})
+        return
       }
     })
   })

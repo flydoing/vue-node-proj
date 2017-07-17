@@ -16,8 +16,9 @@
             </div>
           </div>
           <span class="goods-price">￥{{cart.brand_price*cart.cart_num}}</span>
-          <a class="goods-delete" href="javascript:;" @click="delectCart(index, carts)">删除</a>
+          <a class="goods-delete" href="javascript:;" @click="delectCart(index, carts, cart.brand_id)">删除</a>
         </li>
+        <p v-if="this.carts.length===0">购物车为空</p>
       </ul>
     </div>
 
@@ -143,11 +144,30 @@
           cart.cart_isSelect = this.isAllSelectState
         })
       },
-      delectCart (index, carts) {
-        carts.splice(index, 1)
-        let localDB = new LocalDB('dataCart')
-        this.dataCart.data.carts = this.carts
-        localDB.set(this.dataCart)
+      delectCart (index, carts, brandId) {
+        // 从数据库删除该商品
+        this.$http({
+          url: '/api/goods/delectCart',
+          method: 'GET',
+          params: {
+            brand_id: brandId,
+            name: this.name
+          }
+        })
+          .then((res) => {
+            let data = res.data
+            console.log(data)
+            if (data.code === 200) {
+              // 删除成功
+              console.log(data.msg)
+              carts.splice(index, 1)
+              let localDB = new LocalDB('dataCart')
+              this.dataCart.data.carts = this.carts
+              localDB.set(this.dataCart)
+            } else {
+              console.log(data.msg)
+            }
+          })
       }
     }
   }
