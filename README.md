@@ -27,7 +27,7 @@ my first project of learning vue-node
         |--package.json         //安装依赖：express，mongoose
 ```
 
-**项目说明：**
+## 项目说明：
 
 前端：`client` 目录；主要技术：`vue-cli + vue2 + vue-router2 + vuex2 + axios + es6 + sass + eslint`
 
@@ -35,15 +35,37 @@ my first project of learning vue-node
 
 （前后端分离，路由跳转在前端通过 vue-router 控制，后台只负责数据接口）
 
-**项目运行：**
+## 项目运行：
+### 环境配置：
 
 
+### 运行顺序：
 
-**效果呈现：**
-<img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show1.jpeg" width="320px" height="570px" />
-<img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show2.jpeg" width="320px" height="570px" />
-<img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show3.jpeg" width="320px" height="570px" />
-<img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show4.jpeg" width="320px" height="570px" />
-<img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show5.jpeg" width="320px" height="570px" />
-<img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show6.jpeg" width="320px" height="570px" />
+新建命令行窗口1，开启本地mongodb服务：`mongod`;
+
+新建命令行窗口2，开启本地后台node服务器：
+
+```
+cd vue-node-proj/server
+cnpm install --save
+node index.js
+```
+
+新建命令行窗口3，开启本地前端vue的dev模式：
+
+```
+cd vue-node-proj/client
+cnpm install --save
+npm run dev --color
+```
+
+
+## 效果呈现：
+
+<img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show1.jpeg" width="160px" height="285px" />
+<img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show2.jpeg" width="160px" height="285px" />
+<img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show3.jpeg" width="160px" height="285px" />
+<img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show4.jpeg" width="160px" height="285px" />
+<img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show5.jpeg" width="160px" height="285px" />
+<img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show6.jpeg" width="160px" height="285px" />
 
