@@ -37,7 +37,15 @@ my first project of learning vue-node
 
 ## 项目运行：
 ### 环境配置：
+**node.js 与 express 入门：**
 
+学习练习代码：参考本项目中的文件夹 `vue-node-proj/s1_serverNodeBegin` 和 `vue-node-proj/s2_serverExpress`；
+
+**mongodb的安装与配置、mongoose的基本使用：**
+
+blog学习笔记：[http://gjincai.github.io/categories/mongodb/](http://gjincai.github.io/categories/mongodb/)；
+
+学习练习代码：参考本项目中的文件夹 `vue-node-proj/s3_Mongodb` 和 `vue-node-proj/s3_Mongodb`；
 
 ### 运行顺序：
 
@@ -59,13 +67,11 @@ cnpm install --save
 npm run dev --color
 ```
 
+## 相关学习笔记
+
+
 
 ## 效果呈现：
 
-<img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show1.jpeg" width="160px" height="285px" />
-<img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show2.jpeg" width="160px" height="285px" />
-<img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show3.jpeg" width="160px" height="285px" />
-<img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show4.jpeg" width="160px" height="285px" />
-<img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show5.jpeg" width="160px" height="285px" />
-<img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show6.jpeg" width="160px" height="285px" />
+<img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show1.jpeg" width="160px" height="285px" /><img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show2.jpeg" width="160px" height="285px" /><img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show3.jpeg" width="160px" height="285px" /><img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show4.jpeg" width="160px" height="285px" /><img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show5.jpeg" width="160px" height="285px" /><img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show6.jpeg" width="160px" height="285px" />
 
