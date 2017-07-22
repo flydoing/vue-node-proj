@@ -1,7 +1,10 @@
 # vue-node-proj
 my first project of learning vue-node
 
-简介：之前刚入门vue并做好了一个简而全的纯vue2全家桶的项目，数据都是本地 json 模拟请求的；详情请移步这里：[vue-proj-demo](https://github.com/gjincai/vue-proj-demo)
+**简介：**
+
+之前刚入门vue并做好了一个简而全的纯vue2全家桶的项目，数据都是本地 json 模拟请求的；详情请移步这里：[vue-proj-demo](https://github.com/gjincai/vue-proj-demo)
+
 为了真正做到数据库的真实存取，于是又开始入门了 node+express+mongoose 、并以此来为之前的vue页面写后台数据接口。
 
 ## 代码目录说明：
@@ -24,9 +27,23 @@ my first project of learning vue-node
         |--package.json         //安装依赖：express，mongoose
 ```
 
-## 项目运行
-**说明：**
+**项目说明：**
+
 前端：`client` 目录；主要技术：`vue-cli + vue2 + vue-router2 + vuex2 + axios + es6 + sass + eslint`
+
 后台：`server` 目录；主要技术：`express+mongoose`
+
 （前后端分离，路由跳转在前端通过 vue-router 控制，后台只负责数据接口）
+
+**项目运行：**
+
+
+
+**效果呈现：**
+<img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show1.jpeg" width="320px" height="570px" />
+<img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show2.jpeg" width="320px" height="570px" />
+<img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show3.jpeg" width="320px" height="570px" />
+<img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show4.jpeg" width="320px" height="570px" />
+<img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show5.jpeg" width="320px" height="570px" />
+<img src="http://ohe5avf3y.bkt.clouddn.com/pro/vue-node/vue-node-proj/pro-vue-node-show6.jpeg" width="320px" height="570px" />
 
