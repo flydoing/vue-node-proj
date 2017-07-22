@@ -107,19 +107,6 @@
               console.log(data.msg)
             }
           })
-//        let localDB = new LocalDB('dataCart')
-//        if (localDB.get('dataCart').length === 0 || localDB.get('dataCart').data.carts.length === 0) {
-//          this.$http.get('../../static/data/cart.json').then((response) => {
-//            this.dataCart = response.data
-//            this.carts = this.dataCart.data.carts
-//            localDB.set(this.dataCart)
-//          }, (response) => {
-//            // error
-//          })
-//        } else {
-//          this.dataCart = localDB.get('dataCart')
-//          this.carts = this.dataCart.data.carts
-//        }
       },
       changeNum (change, cart) {
         if (change === -1) {

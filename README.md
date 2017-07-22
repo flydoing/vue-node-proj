@@ -21,7 +21,6 @@ my first project of learning vue-node
         |--api.js               //所有接口
         |--db.js                //数据库初始化、Schema数据模型
         |--index.js             //后台服务启动入口
-        |--index.js             //后台服务启动入口
         |--initCarts.json       //首次连接数据库，购物车数据的初始化
         |--initGoods.json       //首次连接数据库，所有商品数据的初始化
         |--package.json         //安装依赖：express，mongoose

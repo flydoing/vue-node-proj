@@ -3,11 +3,13 @@ const Schema = mongoose.Schema
 const initGoods = require('./initGoods.json')
 const initCarts = require('./initCarts.json')
 
+// 用户信息的数据结构模型
 const userSchema = new Schema({
   name: {type: String},
   pwd: {type: String},
   time: {type: Date, default: Date.now}
 })
+// 商品的的数据结构模型
 const goodsSchema = new Schema({
   brand_id: Number,
   brand_cate: String,
@@ -17,17 +19,8 @@ const goodsSchema = new Schema({
   brand_price: Number,
   brand_desc: String,
   brand_pic: String
-  // goods: [
-  //   {
-  //     brand_id: Number,
-  //     brand_cate: String,
-  //     brand_name: String,
-  //     brand_price: Number,
-  //     brand_desc: String,
-  //     brand_pic: String
-  //   }
-  // ]
 })
+// 购物车的的数据结构模型
 const cartsSchema = new Schema({
   name: String,
   brand_id: Number,
@@ -75,7 +68,7 @@ const initData = function () {
       console.log('db open not first time');
     }
   })
-  // 为用户name15011760703初始化购物车内容
+  // 为用户name15011760730初始化购物车内容
   db.cartsModel.find({}, function(err, doc){
     if (err) {
       console.log('initData出错：' + err);
