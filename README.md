@@ -48,7 +48,11 @@ blog学习笔记：[http://gjincai.github.io/categories/mongodb/](http://gjincai
 
 ### 运行顺序：
 
-新建命令行窗口1，开启本地mongodb服务：`mongod`;
+新建命令行窗口1，开启本地mongodb服务：
+
+```
+mongod
+```
 
 新建命令行窗口2，开启本地后台node服务器：
 
@@ -66,9 +70,14 @@ cnpm install --save
 npm run dev --color
 ```
 
+然后在浏览器打开：
+
+```
+localhost:8080
+```
+
 ## 相关学习笔记
-
-
+[express+mongoose 实现简易后台数据接口](http://gjincai.github.io/2017/07/26/express-mongoose-%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93%E5%90%8E%E5%8F%B0%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%8F%A3/)
 
 ## 效果呈现：
 
